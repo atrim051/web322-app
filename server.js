@@ -17,7 +17,17 @@ app.get("/about", (req, res) => {
 app.get("/employees", (req, res)  => {
     var resText = `<p>TODO:</p>`;
     res.send(resText);
+    res.sendFile(path.join(__dirname, "/data/employees.json"));
 });
 
-// setup http server to listen on HTTP_PORT
+app.get("/managers", (req, res)  => {
+    var resText = `<p>TODO:</p>`;
+    res.send(resText);
+});
+
+app.get("/departments", (req, res)  => {
+    var resText = `<p>TODO:</p>`;
+    res.send(resText);
+});
+
 app.listen(HTTP_PORT);
