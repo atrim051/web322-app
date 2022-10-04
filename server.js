@@ -12,7 +12,6 @@ function onHTTPStart() {
 app.use(express.static('public'));
 // setup a 'route' to listen on the default url path
 app.get("/", (req, res) => {
-    console.log("Express http server listening on " + HTTP_PORT);
     res.sendFile(path.join(__dirname, "/views/home.html"));
 });
 
