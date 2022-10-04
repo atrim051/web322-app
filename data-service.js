@@ -25,7 +25,7 @@ module.exports.initialize = function () {
 module.exports.getAllEmployees = function () {
   return new Promise((resolve, reject) => {
     if (employees.length == 0) {
-      reject('No Employee Found!');
+      reject('No Results Returned');
     }
     resolve(employees);
   });
@@ -40,7 +40,7 @@ module.exports.getManagers = function () {
       }
     }
     if (managers.length == 0) {
-      reject('No Managers Found!');
+      reject('No Results Returned');
     }
     resolve(employees);
   });
@@ -49,69 +49,8 @@ module.exports.getManagers = function () {
 module.exports.getDepartments = function () {
   return new Promise((resolve, reject) => {
     if (departments.length == 0) {
-      reject('No Department Found!');
+      reject('No Results Returned');
     }
     resolve(departments);
   });
-};
-
-module.exports.addEmployee = function (employeeData) {
-  return new Promise((resolve, reject) => {
-    if (employeeData.isManager == undefined) employeeData.isManager = false;
-    else employeeData.isManager = true;
-    employeeData.employeeNum = employees.length + 1;
-    employees.push(employeeData);
-    resolve(
-      `Employee #${employeeData.employeeNum} has been added successfully!`
-    );
-  });
-};
-
-module.exports.getEmployeesByStatus = function (status) {
-  return new Promise((resolve, reject) => {
-    var empByStatus = [];
-    empByStatus = employees.filter((employee) => {
-      return employee.status == status;
-    });
-    if (empByStatus.length == 0) reject('No Employee by this status found!');
-    else resolve(empByStatus);
-  });
-};
-
-module.exports.getEmployeesByDepartment = function (department) {
-  return new Promise((resolve, reject) => {
-    var empByDepartment = [];
-    empByDepartment = employees.filter((employee) => {
-      return employee.department == department;
-    });
-    if (empByDepartment.length == 0)
-      reject('No Employee by this department found!');
-    else resolve(empByDepartment);
-  });
-};
-
-module.exports.getEmployeesByManager = function (manager) {
-  return new Promise((resolve, reject) => {
-    var empByManager = [];
-    empByManager = employees.filter((employee) => {
-      return employee.employeeManagerNum == manager;
-    });
-    if (empByManager.length == 0)
-      reject('No Employee managed this manager found!');
-    else resolve(empByManager);
-  });
-};
-
-module.exports.getEmployeeByNum = function (num) {
-  return new Promise((resolve, reject) => {
-    var findEmp = employees.filter((employee) => {
-      return employee.employeeNum == num;
-    });
-    if (findEmp.length == 0) reject('No Employee by this id found!');
-    else resolve(findEmp);
-  });
-};
-
-module.exports.getEmployeesByStatus = function (status) {
-  return new Promise((resolve, reject) => {});
 };
