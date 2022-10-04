@@ -21,7 +21,7 @@ app.get("/about", (req, res) => {
 });
 
 app.get('/employees', function (req, res) {
-    dataService
+    data
       .getAllEmployees()
       .then((data) => {
         res.json(data);
@@ -38,7 +38,7 @@ app.get("/managers", (req, res)  => {
 });
 
 app.get("/departments", (req, res)  => {
-    dataService.getDepartments().then((data) => {
+    data.getDepartments().then((data) => {
         res.json(data);
       });
 });
