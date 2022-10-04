@@ -16,7 +16,6 @@ var express = require("express");
 var app = express();
 var path = require("path");
 var data = require("./data-service.js");
-const bodyParser = require('body-parser');
 
 function onHTTPStart() {
     console.log('Express http server listening on: ' + HTTP_PORT);
