@@ -7,7 +7,7 @@ other source
 *
 * Name: Alexander Trimble Student ID: 144365160 Date: 2022-10-02
 *
-* Your app’s URL (from Heroku) :https://afternoon-hollows-68810.herokuapp.com/about
+* Your app’s URL (from Heroku) :https://afternoon-hollows-68810.herokuapp.com/
 *
 *************************************************************************/ 
 
