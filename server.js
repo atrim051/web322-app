@@ -1,3 +1,16 @@
+/*************************************************************************
+* WEB322– Assignment 2
+* I declare that this assignment is my own work in accordance with Seneca Academic
+Policy. No part * of this assignment has been copied manually or electronically from any
+other source
+* (including 3rd party web sites) or distributed to other students.
+*
+* Name: Alexander Trimble Student ID: 144365160 Date: 2022-10-02
+*
+* Your app’s URL (from Heroku) :https://afternoon-hollows-68810.herokuapp.com/about
+*
+*************************************************************************/ 
+
 var HTTP_PORT = process.env.PORT || 8080;
 var express = require("express");
 var app = express();
