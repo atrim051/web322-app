@@ -16,6 +16,7 @@ var express = require("express");
 var app = express();
 var path = require("path");
 var data = require("./data-service.js");
+var multer = require("multer");
 
 function onHTTPStart() {
     console.log('Express http server listening on: ' + HTTP_PORT);
@@ -31,7 +32,14 @@ app.get("/about", (req, res) => {
     res.sendFile(path.join(__dirname, "/views/about.html"));
 });
 
-app.get('/employees', function (req, res) {
+app.get('/employees', (req, res) => {
+  //writing a promise involving functions from a different .js file
+  //turn that .js file into a variable (ex): var example = require("path name")
+  //it's used with app.get
+  //using those functions from the other file is like calling members from a class in C++
+    //ex: example.functionExample()
+  //then begin the promise after the function 
+    //ex: example.functionExample().then((example) => {the response if successful like response.json(example);}).catch((err) => {res.json({message: err});});
     data
       .getAllEmployees()
       .then((data) => {
@@ -52,6 +60,14 @@ app.get("/departments", (req, res)  => {
     data.getDepartments().then((data) => {
         res.json(data);
       });
+});
+
+app.get("/employees/add", (req, res)  => {
+  res.sendFile(path.join(__dirname, "/views/addEmployee.html"));
+});
+
+app.get("/images/add", (req, res)  => {
+  res.sendFile(path.join(__dirname, "/views/addImage.html "));
 });
 
 data

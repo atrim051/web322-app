@@ -3,7 +3,7 @@ const { resolve } = require('path');
 let employees = [];
 let departments = [];
 
-module.exports.initialize = function () {
+module.exports.initialize = () => {
   return new Promise((resolve, reject) => {
     fs.readFile('./data/employees.json', (err, data) => {
       if (err) {
