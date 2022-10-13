@@ -75,12 +75,14 @@ app.get("/images", (req, res)  => {
   });
 });
 
-app.post("/images/add", (req, res)  => {
-  res.redirect("/images");
+app.post('/images/add', upload.single('imageFile'), (req, res) => {
+  res.redirect('/images');
 });
 
-app.get("/images/add", upload.single('imageFile'), (req, res)  => {
-  res.sendFile(path.join(__dirname, "/views/addImage.html"));
+app.get('/images', function (req, res) {
+  fs.readdir('./public/images/uploaded', (err, items) => {
+    res.json({ images: items });
+  });
 });
 
 
