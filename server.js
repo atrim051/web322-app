@@ -11,12 +11,21 @@ other source
 *
 *************************************************************************/ 
 
-var HTTP_PORT = process.env.PORT || 8080;
-var express = require("express");
-var app = express();
-var path = require("path");
-var data = require("./data-service.js");
-var multer = require("multer");
+const express = require("express");
+const app = express();
+const data = require("./data-service.js");
+const multer = require("multer");
+const path = require("path");
+const HTTP_PORT = process.env.PORT || 8080;
+
+const storage = multer.diskStorage({
+  destination: "./public/images/uploaded",
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ storage: storage });
 
 function onHTTPStart() {
     console.log('Express http server listening on: ' + HTTP_PORT);
