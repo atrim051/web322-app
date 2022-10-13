@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
   destination: "./public/images/uploaded",
   filename: function (req, file, cb) {
     cb(null, Date.now() + path.extname(file.originalname));
-  }
+  },
 });
 
 const upload = multer({ storage: storage });
@@ -43,14 +43,7 @@ app.get("/about", (req, res) => {
 });
 
 app.get('/employees', (req, res) => {
-  //writing a promise involving functions from a different .js file
-  //turn that .js file into a variable (ex): var example = require("path name")
-  //it's used with app.get
-  //using those functions from the other file is like calling members from a class in C++
-    //ex: example.functionExample()
-  //then begin the promise after the function 
-    //ex: example.functionExample().then((example) => {the response if successful like response.json(example);}).catch((err) => {res.json({message: err});});
-    data
+     data
       .getAllEmployees()
       .then((data) => {
         res.json(data);
@@ -76,19 +69,20 @@ app.get("/employees/add", (req, res)  => {
   res.sendFile(path.join(__dirname, "/views/addEmployee.html"));
 });
 
-app.get("/images/add", upload.single('imageFile'), (req, res)  => {
-  res.sendFile(path.join(__dirname, "/views/addImage.html"));
-});
-
-app.post("/images/add", (req, res)  => {
-  res.redirect('/images');
-});
-
 app.get("/images", (req, res)  => {
   fs.readdir('./public/images/uploaded', (err, items) => {
     res.json({ images: items });
   });
 });
+
+app.post("/images/add", (req, res)  => {
+  res.redirect("/images");
+});
+
+app.get("/images/add", upload.single('imageFile'), (req, res)  => {
+  res.sendFile(path.join(__dirname, "/views/addImage.html"));
+});
+
 
 data
   .initialize()
