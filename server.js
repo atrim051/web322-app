@@ -16,6 +16,7 @@ const app = express();
 const data = require("./data-service.js");
 const multer = require("multer");
 const path = require("path");
+const fs = require('fs');
 const HTTP_PORT = process.env.PORT || 8080;
 
 const storage = multer.diskStorage({
@@ -75,8 +76,18 @@ app.get("/employees/add", (req, res)  => {
   res.sendFile(path.join(__dirname, "/views/addEmployee.html"));
 });
 
-app.get("/images/add", (req, res)  => {
+app.get("/images/add", upload.single('imageFile'), (req, res)  => {
   res.sendFile(path.join(__dirname, "/views/addImage.html"));
+});
+
+app.post("/images/add", (req, res)  => {
+  res.redirect('/images');
+});
+
+app.get("/images", (req, res)  => {
+  fs.readdir('./public/images/uploaded', (err, items) => {
+    res.json({ images: items });
+  });
 });
 
 data
