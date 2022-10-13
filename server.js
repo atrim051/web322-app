@@ -76,7 +76,7 @@ app.get("/employees/add", (req, res)  => {
 });
 
 app.get("/images/add", (req, res)  => {
-  res.sendFile(path.join(__dirname, "/views/addImage.html "));
+  res.sendFile(path.join(__dirname, "/views/addImage.html"));
 });
 
 data
