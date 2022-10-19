@@ -32,7 +32,7 @@ function onHTTPStart() {
   console.log('Express http server listening on: ' + HTTP_PORT);
 }
 
-app.use(express.json()); 
+//app.use(express.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 // setup a 'route' to listen on the default url path
