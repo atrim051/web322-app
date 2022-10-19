@@ -33,7 +33,7 @@ function onHTTPStart() {
 }
 
 //app.use(express.json()); 
-app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 // setup a 'route' to listen on the default url path
 app.get("/", (req, res) => {
