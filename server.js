@@ -1,5 +1,5 @@
 /*************************************************************************
-* WEB322– Assignment 2
+* WEB322– Assignment 3
 * I declare that this assignment is my own work in accordance with Seneca Academic
 Policy. No part * of this assignment has been copied manually or electronically from any
 other source
@@ -18,6 +18,8 @@ const multer = require("multer");
 const path = require("path");
 const fs = require('fs');
 const HTTP_PORT = process.env.PORT || 8080;
+app.use(express.json()); 
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const storage = multer.diskStorage({
   destination: "./public/images/uploaded",
@@ -83,6 +85,14 @@ app.get('/images/add', function (req, res) {
   res.sendFile(path.join(__dirname, '/views/addImage.html'));
 });
 
+app.post('/employees/add', (req, res) => {
+  dataService
+    .addEmployee(req.body)
+    .then(res.redirect('/employees'))
+    .catch(function (err) {
+      res.json({ message: err });
+    });
+});
 
 data
   .initialize()
