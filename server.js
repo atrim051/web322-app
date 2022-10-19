@@ -85,14 +85,14 @@ app.get('/images/add', function (req, res) {
   res.sendFile(path.join(__dirname, '/views/addImage.html'));
 });
 
-// app.post('/employees/add', (req, res) => {
-//   data
-//     .addEmployee(req.body)
-//     .then(res.redirect('/employees'))
-//     .catch(function (err) {
-//       res.json({ message: err });
-//     });
-// });
+app.post('/employees/add', (req, res) => {
+  data
+    .addEmployee(req.body)
+    .then(res.redirect('/employees'))
+    .catch(function (err) {
+      res.json({ message: err });
+    });
+});
 
 data
   .initialize()
