@@ -18,8 +18,6 @@ const multer = require("multer");
 const path = require("path");
 const fs = require('fs');
 const HTTP_PORT = process.env.PORT || 8080;
-app.use(express.json()); 
-app.use(bodyParser.urlencoded({ extended: true }));
 
 const storage = multer.diskStorage({
   destination: "./public/images/uploaded",
@@ -31,9 +29,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 function onHTTPStart() {
-    console.log('Express http server listening on: ' + HTTP_PORT);
-  }
+  console.log('Express http server listening on: ' + HTTP_PORT);
+}
 
+app.use(express.json()); 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 // setup a 'route' to listen on the default url path
 app.get("/", (req, res) => {
