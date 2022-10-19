@@ -18,8 +18,8 @@ const multer = require("multer");
 const path = require("path");
 const fs = require('fs');
 const HTTP_PORT = process.env.PORT || 8080;
-//app.use(express.json()); 
-//app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json()); 
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const storage = multer.diskStorage({
   destination: "./public/images/uploaded",
