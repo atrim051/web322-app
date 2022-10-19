@@ -54,15 +54,3 @@ module.exports.getDepartments = function () {
     resolve(departments);
   });
 };
-
-module.exports.addEmployee = function (employeeData) {
-  return new Promise((resolve, reject) => {
-    if (employeeData.isManager == undefined) employeeData.isManager = false;
-    else employeeData.isManager = true;
-    employeeData.employeeNum = employees.length + 1;
-    employees.push(employeeData);
-    resolve(
-      `Employee #${employeeData.employeeNum} has been added successfully!`
-    );
-  });
-};
