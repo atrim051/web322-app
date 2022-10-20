@@ -138,6 +138,10 @@ app.post('/employees/add', (req, res) => {
     });
 });
 
+app.use(function (req, res) {
+  res.status(404).send('Page Not Found');
+});
+
 data
   .initialize()
   .then(function () {
