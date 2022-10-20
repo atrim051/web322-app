@@ -90,7 +90,7 @@ app.get('/employees', (req, res) => {
 
 app.get("/employee/:value", (req, res) => {
   data
-  .getEmployeeByNum()
+  .getEmployeeByNum(req.params.value)
   .then((data) => {
     res.json(data);
   })
