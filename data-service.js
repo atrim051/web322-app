@@ -58,14 +58,14 @@ module.exports.addEmployee = function (employeeData) {
     return new Promise((resolve, reject) => {
       var managers = [];
       for (let i = 0; i < employees.length; i++) {
-        if (employees[i].isManager === true) {
+        if (employees[i].isManager == true) {
           managers.push(employees[i]);
         }
       }
       if (managers.length == 0) {
         reject('No Results Returned');
       }
-      resolve(employees);
+      resolve(managers);
     });
   };
   
