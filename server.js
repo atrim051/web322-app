@@ -88,6 +88,17 @@ app.get('/employees', (req, res) => {
   }
 });
 
+app.get("/employee/value", (req, res) => {
+  data
+  .getEmployeeByNum()
+  .then((data) => {
+    res.json(data);
+  })
+  .catch((err) => {
+    res.json({ message: err });
+  });
+});
+
 app.get("/managers", (req, res) => {
   data.getManagers().then((data) => {
     res.json(data);

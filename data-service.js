@@ -101,3 +101,13 @@ module.exports.getEmployeesByManager = (manager) => {
     else resolve(empByManager);
   });
 };
+
+module.exports.getEmployeeByNum = (num) => {
+  return new Promise((resolve, reject) => {
+    var empByNum = employees.filter((employee) =>{
+      return employee.employeeNum == num; 
+    });
+    if (empByNum.length == 0) reject('No Employee by this status found!');
+    else resolve(empByNum);
+  });
+};
