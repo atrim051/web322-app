@@ -66,6 +66,16 @@ app.get('/employees', (req, res) => {
         res.json({ message: err });
       });
   }
+  else if (req.query.empByManager) {
+    data 
+      .getEmployeesByManager(req.query.employeeManagerNum)
+      .then((data) =>{
+        res.json(data);
+      })
+      .catch(function (err) {
+        res.json({ message: err });
+      });
+  }
   else {
     data
       .getAllEmployees()

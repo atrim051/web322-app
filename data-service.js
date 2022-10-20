@@ -90,3 +90,14 @@ module.exports.getEmployeesByDepartment = (department) => {
     else resolve(empByDepartment);
   });
 };
+
+module.exports.getEmployeesByManager = (manager) => {
+  return new Promise((resolve, reject) => {
+    var empByManager = [];
+    empByManager = employees.filter((employee) =>{
+      return employee.manager == manager; 
+    });
+    if (empByManager.length == 0) reject('No Employee by this status found!');
+    else resolve(empByManager);
+  });
+};
