@@ -47,8 +47,11 @@ app.get("/about", (req, res) => {
 
 app.get('/employees', (req, res) => {
   if (req.query.status) {
-    data. 
-      get
+    data 
+      .getEmployeesByStatus(req.query.status)
+      .then((data) =>{
+        res.json(data);
+      });
   }
   else {
     data
