@@ -111,9 +111,9 @@ app.get("/departments", (req, res) => {
   });
 });
 
-// app.get("/employees/add", (req, res) => {
-//   res.sendFile(path.join(__dirname, "/views/addEmployee.html"));
-// });
+app.get("/employees/add", (req, res) => {
+  res.sendFile(path.join(__dirname, "/views/addEmployee.html"));
+});
 
 app.get("/images", (req, res) => {
   fs.readdir('./public/images/uploaded', (err, items) => {
