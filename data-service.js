@@ -79,3 +79,14 @@ module.exports.getEmployeesByStatus = (status) => {
     else resolve(empByStatus);
   });
 };
+
+module.exports.getEmployeesByDepartment = (department) => {
+  return new Promise((resolve, reject) => {
+    var empByDepartment = [];
+    empByDepartment = employees.filter((employee) =>{
+      return employee.department == department;
+    });
+    if (empByDepartment.length == 0) reject('No Employee by this status found!');
+    else resolve(empByDepartment);
+  });
+};

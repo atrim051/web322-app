@@ -56,6 +56,16 @@ app.get('/employees', (req, res) => {
         res.json({ message: err });
       });
   }
+  else if (req.query.department) {
+    data 
+      .getEmployeesByDepartment(req.query.department)
+      .then((data) =>{
+        res.json(data);
+      })
+      .catch(function (err) {
+        res.json({ message: err });
+      });
+  }
   else {
     data
       .getAllEmployees()
