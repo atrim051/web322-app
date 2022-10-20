@@ -72,7 +72,7 @@ module.exports.addEmployee = function (employeeData) {
 module.exports.getEmployeesByStatus = (status) => {
   return new Promise((resolve, reject) => {
     var empByStatus = [];
-    empByStatus = employess.filter((employee) =>{
+    empByStatus = employees.filter((employee) =>{
       return employee.status == status;
     });
     if (empByStatus.length == 0) reject('No Employee by this status found!');
