@@ -88,7 +88,7 @@ app.get('/employees', (req, res) => {
   }
 });
 
-app.get("/employee/value", (req, res) => {
+app.get("/employee/:value", (req, res) => {
   data
   .getEmployeeByNum()
   .then((data) => {
