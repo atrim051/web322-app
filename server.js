@@ -51,6 +51,9 @@ app.get('/employees', (req, res) => {
       .getEmployeesByStatus(req.query.status)
       .then((data) =>{
         res.json(data);
+      })
+      .catch(function (err) {
+        res.json({ message: err });
       });
   }
   else {
