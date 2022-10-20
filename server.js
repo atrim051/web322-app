@@ -9,7 +9,7 @@ other source
 *
 * Your app’s URL (from Heroku) :https://afternoon-hollows-68810.herokuapp.com/
 *
-*************************************************************************/ 
+*************************************************************************/
 
 const express = require("express");
 const app = express();
@@ -33,20 +33,25 @@ function onHTTPStart() {
   console.log('Express http server listening on: ' + HTTP_PORT);
 }
 
-app.use(express.json()); 
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 // setup a 'route' to listen on the default url path
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "/views/home.html"));
+  res.sendFile(path.join(__dirname, "/views/home.html"));
 });
 
 app.get("/about", (req, res) => {
-    res.sendFile(path.join(__dirname, "/views/about.html"));
+  res.sendFile(path.join(__dirname, "/views/about.html"));
 });
 
 app.get('/employees', (req, res) => {
-     data
+  if (req.query.status) {
+    data. 
+      get
+  }
+  else {
+    data
       .getAllEmployees()
       .then((data) => {
         res.json(data);
@@ -54,25 +59,26 @@ app.get('/employees', (req, res) => {
       .catch((err) => {
         res.json({ message: err });
       });
+  }
+});
+
+app.get("/managers", (req, res) => {
+  data.getManagers().then((data) => {
+    res.json(data);
   });
-
-app.get("/managers", (req, res)  => {
-    data.getManagers().then((data) => {
-        res.json(data);
-      });
 });
 
-app.get("/departments", (req, res)  => {
-    data.getDepartments().then((data) => {
-        res.json(data);
-      });
+app.get("/departments", (req, res) => {
+  data.getDepartments().then((data) => {
+    res.json(data);
+  });
 });
 
-app.get("/employees/add", (req, res)  => {
+app.get("/employees/add", (req, res) => {
   res.sendFile(path.join(__dirname, "/views/addEmployee.html"));
 });
 
-app.get("/images", (req, res)  => {
+app.get("/images", (req, res) => {
   fs.readdir('./public/images/uploaded', (err, items) => {
     res.json({ images: items });
   });

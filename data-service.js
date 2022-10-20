@@ -57,12 +57,25 @@ module.exports.getDepartments = function () {
 
 module.exports.addEmployee = function (employeeData) {
   return new Promise((resolve, reject) => {
-    if (employeeData.isManager == undefined) employeeData.isManager = false;
-    else employeeData.isManager = true;
+    if (employeeData.isManager == undefined) 
+      employeeData.isManager = false;
+    else 
+      employeeData.isManager = true;
     employeeData.employeeNum = employees.length + 1;
     employees.push(employeeData);
     resolve(
       `Employee #${employeeData.employeeNum} has been added successfully!`
     );
+  });
+};
+
+module.exports.getEmployeesByStatus = (status) => {
+  return new Promise((resolve, reject) => {
+    var empByStatus = [];
+    empByStatus = employess.filter((employee) =>{
+      return employee.status == status;
+    });
+    if (empByStatus.length == 0) reject('No Employee by this status found!');
+    else resolve(empByStatus);
   });
 };
